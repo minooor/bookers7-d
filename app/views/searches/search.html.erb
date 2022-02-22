@@ -1,0 +1,5 @@
+  <% if @range == "User" %>
+   <%= render 'user', users: @users %>
+  <% else %>
+   <%= render 'book', books: @books %>
+  <% end %>
