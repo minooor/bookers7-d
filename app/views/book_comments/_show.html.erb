@@ -1,0 +1,24 @@
+    <td><%= link_to(book.user) do %>
+      <%= image_tag book.user.get_profile_image, size:"100x100" %><br>
+      <%= book.user.name %>
+      <% end %>
+    </td>
+    <td><%= link_to book.title, book, remote: true %></td>
+    <td><%= book.body %></td>
+
+    <td class="favorite_buttons_<%= book.id %>">
+      <%= render "favorites/favorite-btn", book: book %>
+    </td>
+
+    <td>コメント数: <%= book.book_comments.count %></td>
+
+      <td>
+        <% if book.user == current_user %>
+         <%= link_to 'Edit', edit_book_path(book), remote: true, class: "btn btn-sm btn-success edit_book_#{book.id}" %>
+        <% end %>
+      </td>
+      <td>
+        <% if book.user == current_user %>
+         <%= link_to 'Destroy', book, method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger destroy_book_#{book.id}"%>
+        <% end %>
+        </td>
