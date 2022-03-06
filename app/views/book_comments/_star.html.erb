@@ -1,10 +1,14 @@
 
-<%= form_with(model: @book, local: true) do |form| %>
-  <div id="evaluate_stars">
-    <label>Rate</label>
+<%= form_with(model: book, local: true) do |f| %>
+   <!-- 評価 -->
+  <div class="form-group row" id="star1">
+    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :book_star %>
+
 <% end %>
 <script>
-  $('#evaluate_stars').raty({
+  $('.book-star').empty();
+  $('#star1').raty({
     size     : 36,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
