@@ -1,19 +1,25 @@
 
 <%= form_with(model: book, local: true) do |f| %>
+ <% if book.id === nil %>
    <!-- 評価 -->
   <div class="form-group row" id="star1">
     <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
     <%= f.hidden_field :rate, id: :book_star %>
 
-<% end %>
+
 <script>
+$(document).on('turbolinks:load', function() {
   $('.book-star').empty();
   $('#star1').raty({
     size     : 36,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",
+    half: true,
     scoreName: 'book[star]' //登録するモデル名とカラム名を記述
   });
+}
 </script>
 </div>
+ <% end %>
+<% end %>

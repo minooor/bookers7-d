@@ -30,6 +30,7 @@
         $('.book-star').empty();
         $('.book-star').raty({
           readOnly: true,
+          half: true,
           score: function() {
           return $(this).attr('data-score');
           },
