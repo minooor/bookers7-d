@@ -68,6 +68,6 @@ before_action :authenticate_user!
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :star, :category)
   end
 end
