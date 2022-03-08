@@ -11,7 +11,18 @@ before_action :authenticate_user!
 
   def index
     @book = Book.new
-    @books = Book.all.order("id DESC")
+    @books = Book.all
+
+    if params[:sort_create]
+      @books = Book.latest
+    else
+      @books = Book.all
+    end
+
+    if params[:star]
+      @books = Book.raty
+    end
+
     @user = current_user
   end
 

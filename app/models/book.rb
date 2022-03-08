@@ -25,6 +25,9 @@ class Book < ApplicationRecord
        @book = Book.all
      end
    end
-
-
+   
+   scope :latest, -> {order(created_at: :desc)}
+   scope :raty, -> {order(star: :desc)}
+   
 end
+
