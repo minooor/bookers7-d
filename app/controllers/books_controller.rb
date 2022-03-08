@@ -64,6 +64,11 @@ before_action :authenticate_user!
     @book.destroy
     redirect_to books_path
   end
+  
+  def search_book
+     @book = Book.new
+     @books = Book.search(params[:keyword])
+  end
 
   private
 
